@@ -56,10 +56,7 @@ analisis-wisatawan-matlab/
 ## 🚀 Cara Menjalankan
 
 1. Clone repositori:
-   ```bash
-   git clone https://github.com/username/analisis-wisatawan-matlab.git
-   cd analisis-wisatawan-matlab/src
-   Buka file analisis_wisatawan.m di MATLAB
+   ```intelekgen3.m
 
 Jalankan script dan lihat hasil visualisasi
 ✅ Ketergantungan
