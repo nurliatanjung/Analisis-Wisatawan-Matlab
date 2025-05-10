@@ -46,7 +46,7 @@ Skrip akan menghasilkan dua grafik:
 
 ## 🧾 File
 
-- `intelekgen3.m` – Skrip utama MATLAB untuk menjalankan seluruh proses analisis
+- `intelekgen3.m` – Skrip utama MATLAB untuk menjalankan seluruh proses analisis. Skrip yang sama digunakan untuk faktor lainnya baik sosial, penguasaan dan stimulus
 
 ## 💻 Cara Menjalankan
 
@@ -56,4 +56,11 @@ Skrip akan menghasilkan dua grafik:
 ```matlab
 intelekgen3
 
+✅ Ketergantungan
+MATLAB (R2018 atau lebih baru)
+
+Tidak membutuhkan toolbox tambahan
+
+👤 Kontributor
+Nama Anda — Penulis Script dan Analisis
 
