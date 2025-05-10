@@ -1,71 +1,59 @@
 # Analisis Wisatawan dengan Metode Matriks Fuzzy menggunakan MATLAB
 
-Repositori ini berisi script MATLAB untuk menganalisis distribusi wisatawan berdasarkan kelompok umur dan faktor-faktor yang dinilai oleh para ahli, dengan pendekatan pemodelan matriks fuzzy.
+Repositori ini berisi skrip MATLAB `intelekgen3.m` yang digunakan untuk melakukan analisis data wisatawan berdasarkan rentang usia dan atribut/penilaian dari para ahli menggunakan pendekatan fuzzy logic.
 
-## 🧮 Deskripsi Metode
+## 📊 Deskripsi Singkat
 
-1. **Matriks Data Mentah**  
-   Membentuk matriks awal `A_ij` di mana:  
-   - `i = 1, 2, ..., m` adalah indeks kelompok umur  
-   - `j = 1, 2, ..., n` adalah atribut atau faktor yang dinilai oleh para ahli  
+Analisis dilakukan dengan pendekatan **Matriks Fuzzy Refined Time Dependent (RTD)** dan **Cumulative Effective Analysis Data (CEAD)**, untuk mengevaluasi dampak dari berbagai kelompok umur terhadap delapan faktor yang telah dinilai oleh para ahli.
 
-2. **Transformasi Matriks A**  
-   Setiap elemen matriks `A_ij` ditransformasikan menjadi: F_ij = a_ij / b_i
-   dengan `b_i = batas atas - batas bawah + 1`, yaitu panjang interval usia.  
+## 🧮 Metode dan Langkah Perhitungan
 
-3. **Perhitungan Mean dan Standard Deviasi**  
-Untuk setiap kolom `j` pada `F_ij`, dihitung:  
-- Rata-rata:  
-  ```
-  μ_j = (∑ x_i) / n
-  ```
-- Simpangan baku:  
-  ```
-  σ_j = sqrt(∑ (x_i - μ_j)^2 / n)
-  ```
-Di mana `n = 8` (jumlah atribut), dan `i = 1,...,5` (jumlah kelompok umur).
+1. **Membentuk matriks data mentah awal**  
+   Matriks A<sub>ij</sub> dibentuk, di mana:
+   - `i = 1, 2, ..., m` → interval kelompok umur  
+   - `j = 1, 2, ..., n` → atribut/faktor yang diberikan oleh ahli
 
-4. **Fuzzyfikasi: Matriks RTD**  
-Diberikan nilai alpha (α) dalam [0, 1], maka matriks **Refined Time Dependent (RTD)** dihitung:
-e_ij =
--1 jika f_ij ≤ μ_j - α * σ_j
-0 jika μ_j - α * σ_j < f_ij < μ_j + α * σ_j
-1 jika f_ij ≥ μ_j + α * σ_j
+2. **Transformasi data ke dalam matriks Fuzzy**  
+   Setiap elemen A<sub>ij</sub> dibagi dengan panjang interval usia:  
+   **F<sub>ij</sub> = A<sub>ij</sub> / b<sub>i</sub>**,  
+   dengan b<sub>i</sub> = batas atas - batas bawah + 1
 
+3. **Menghitung Mean dan Standard Deviasi**  
+   Untuk setiap kolom (atribut) dari matriks F<sub>ij</sub>:
+   - **μ<sub>j</sub>** = rata-rata  
+   - **σ<sub>j</sub>** = standar deviasi
 
-5. **Skor Total per Kelompok Umur (RTD row sum)**  
-Menjumlahkan elemen tiap baris dari RTD:
-S_i = ∑ a_ij untuk j = 1,...,8
+4. **Fuzzyfikasi dengan Parameter Alpha (α-cut)**  
+   Nilai α dipilih dari interval [0, 1]. Matriks Refined Time Dependent (RTD) dibangun berdasarkan:
+   e_ij =
+-1, jika f_ij ≤ μ_j - α * σ_j
+0, jika μ_j - α * σ_j < f_ij < μ_j + α * σ_j
+1, jika f_ij ≥ μ_j + α * σ_j
 
+5. **Menjumlahkan baris pada Matriks Fuzzy**  
+Nilai skor per kelompok umur dihitung dengan:
+**S<sub>i</sub> = ∑ a<sub>ij</sub> untuk j = 1 s.d. 8**
 
-6. **Matriks CETD**  
-Matriks kumulatif dibentuk dari penjumlahan beberapa RTD dengan nilai alpha berbeda:  CETD = ∑ RTD(α_k), untuk k = 1,...,k
+6. **Membangun Matriks CEAD (Cumulative Effective Analysis Data)**  
+Dengan menjumlahkan seluruh matriks RTD dari berbagai nilai α:
+CEAD = RTD(α1) + RTD(α2) + ... + RTD(αk)
 
-7. **Visualisasi**  
-- Grafik **RTD** untuk tiap alpha terhadap titik tengah usia  
-- Grafik **CETD** kumulatif untuk analisis gabungan  
+## 📈 Output Visualisasi
 
-## 📂 Struktur Folder
-analisis-wisatawan-matlab/
-├── src/
-│ └── analisis_wisatawan.m # Script utama MATLAB
-├── README.md # Dokumentasi ini
-├── LICENSE # Lisensi (MIT)
-└── results/ # Folder hasil grafik (opsional)
+Skrip akan menghasilkan dua grafik:
+- **Kiri**: Grafik RTD (Refined Time Dependent) untuk berbagai nilai α
+- **Kanan**: Grafik CEAD (Cumulative Effective Analysis Data) sebagai gabungan nilai RTD
 
-## 🚀 Cara Menjalankan
+## 🧾 File
 
-1. Clone repositori:
-   ```intelekgen3.m
+- `intelekgen3.m` – Skrip utama MATLAB untuk menjalankan seluruh proses analisis
 
-Jalankan script dan lihat hasil visualisasi
-✅ Ketergantungan
-MATLAB (R2018 atau lebih baru)
-Tidak membutuhkan toolbox tambahan
+## 💻 Cara Menjalankan
 
-👤 Kontributor
-Nurliyah Indah — Penulis Script dan Analisis
-
-
+1. Buka MATLAB
+2. Pindahkan ke folder tempat file `intelekgen3.m` berada
+3. Jalankan dengan:
+```matlab
+intelekgen3
 
 
