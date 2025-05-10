@@ -62,5 +62,5 @@ MATLAB (R2018 atau lebih baru)
 Tidak membutuhkan toolbox tambahan
 
 👤 Kontributor
-Nama Anda — Penulis Script dan Analisis
+Nurliyah Indah — Penulis Script dan Analisis
 
